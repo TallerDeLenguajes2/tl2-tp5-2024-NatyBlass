@@ -18,4 +18,33 @@ public class Presupuesto
         this.detalle = new List<PresupuestoDetalle>();
     }
 
+
+    public float MontoPresupuesto()
+    {
+        float total = 0;
+        foreach (var item in detalle)
+        {
+            total = total + item.Prod.Precio * item.Cantidad;
+        }
+
+        return total;
+    }
+
+    public float MontoPresupuestoConIVA()
+    {
+        float totalConIVA = MontoPresupuesto() + (MontoPresupuesto() * 21)/ 100;
+        return totalConIVA;
+    }
+
+    public int CantidadProductos()
+    {
+        int cantTotal = 0;
+        foreach (var item in detalle)
+        {
+            cantTotal = cantTotal + item.Cantidad;
+        }
+
+        return cantTotal;
+    }
+
 }
