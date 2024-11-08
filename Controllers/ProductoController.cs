@@ -30,7 +30,29 @@ public class ProductoController : ControllerBase
     [HttpGet]
     public ActionResult ListarProductos()
     {
-        repositorio.ListarProductos();
-        return Ok();
+        var listaProductos = repositorio.ListarProductos();
+        if (listaProductos != null)
+        {
+            return Ok("Productos Listados");
+        }
+        else
+        {
+            return NotFound("No hay Lista de Productos");
+        }
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult ObtenerProductoPorId(int id)
+    {
+        var producto = repositorio.ObtenerProductoPorId(id);
+
+        if(producto != null)
+        {
+            return Ok("Producto Encontrado");
+        }
+        else
+        {
+            return NotFound("Producto no Encontrado");
+        }
     }
 }

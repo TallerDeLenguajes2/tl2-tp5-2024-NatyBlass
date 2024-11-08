@@ -8,7 +8,7 @@ public class PresupuestoDetalle
 
     public PresupuestoDetalle(Producto prod, int cantidad)
     {
-        prod = prod;
-        cantidad = cantidad;
+        this.prod = prod;
+        this.cantidad = cantidad;
     }
 }
