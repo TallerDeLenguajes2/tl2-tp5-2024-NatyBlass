@@ -26,4 +26,11 @@ public class ProductoController : ControllerBase
         repositorio.ModificarProducto(id, prod);
         return Ok();
     }
+
+    [HttpGet]
+    public ActionResult ListarProductos()
+    {
+        repositorio.ListarProductos();
+        return Ok();
+    }
 }

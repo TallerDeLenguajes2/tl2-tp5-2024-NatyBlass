@@ -34,7 +34,35 @@ public class ProductoRepositorio
             command.ExecuteNonQuery();
             connection.Close();
         }
+    }
 
+    public List<Producto> ListarProductos()
+    {
+        var productos = new List<Producto>();
 
+        using (var connection = new SqliteConnection(cadenaDeConexion))
+        {
+            string consulta = "SELECT idProducto, Descripcion, Precio FROM Productos;";
+            var command = new SqliteCommand(consulta, connection);
+
+            connection.Open();
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                while(reader.Read())
+                {
+                    var producto = new Producto(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetInt32(2)
+                    );
+                    
+                    productos.Add(producto);
+                }
+            }
+
+            connection.Close();
+        }
+
+        return productos;
     }
 }
