@@ -19,4 +19,11 @@ public class ProductoController : ControllerBase
         repositorio.CrearProducto(prod);
         return Ok();
     }
+
+    [HttpPut("{id}")]
+    public ActionResult ModificarProducto(int id, Producto prod)
+    {
+        repositorio.ModificarProducto(id, prod);
+        return Ok();
+    }
 }
