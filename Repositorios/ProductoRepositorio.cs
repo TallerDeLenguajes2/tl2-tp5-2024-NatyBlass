@@ -96,4 +96,18 @@ public class ProductoRepositorio
         return prod;
     }
 
+    public void EliminarProducto(int id)
+    {
+        using (var connection = new SqliteConnection(cadenaDeConexion))
+        {
+            string consulta = "DELETE FROM Productos WHERE idProducto = @Id;";
+            var command = new SqliteCommand(consulta, connection);
+            command.Parameters.AddWithValue("@Id", id);
+            
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+    }
+
 }

@@ -14,7 +14,7 @@ public class ProductoController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult CrearProducto(Producto prod)
+    public ActionResult CrearProducto([FromBody] Producto prod)
     {
         repositorio.CrearProducto(prod);
         return Ok();
@@ -24,13 +24,14 @@ public class ProductoController : ControllerBase
     public ActionResult ModificarProducto(int id, Producto prod)
     {
         repositorio.ModificarProducto(id, prod);
-        return Ok();
+        return Ok("Producto Modificado Correctamente");
     }
 
     [HttpGet]
     public ActionResult ListarProductos()
     {
         var listaProductos = repositorio.ListarProductos();
+        
         if (listaProductos != null)
         {
             return Ok("Productos Listados");
@@ -54,5 +55,12 @@ public class ProductoController : ControllerBase
         {
             return NotFound("Producto no Encontrado");
         }
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult EliminarProducto(int id)
+    {
+        repositorio.EliminarProducto(id);
+        return Ok("Producto Eliminado Correctamente");
     }
 }
