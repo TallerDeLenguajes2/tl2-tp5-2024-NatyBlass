@@ -1,4 +1,5 @@
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
+
 
 public class ProductoRepositorio
 {
@@ -6,6 +7,16 @@ public class ProductoRepositorio
 
     public void CrearProducto (Producto prod)
     {
-        using (SqlConnection connection = new SqlConnection(connectionString))
+        using (var connection = new SqliteConnection(cadenaDeConexion))
+        {
+            string consulta = "INSERT INTO Productos (Descripcion, Precio) VALUES (@Descripcion, @Precio);";
+            var command = new SqliteCommand(consulta, connection);
+            command.Parameters.AddWithValue("@Descripcion", prod.Descripcion);
+            command.Parameters.AddWithValue("@Precio", prod.Precio);
+            
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
