@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tl2-tp5-2024-NatyBlass")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e780f09b805cd1b70083a98ce308cbe1d20d50d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c945dbfdfa47376f6cd47e930f4884ffc3504873")]
 [assembly: System.Reflection.AssemblyProductAttribute("tl2-tp5-2024-NatyBlass")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tl2-tp5-2024-NatyBlass")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,4 +14,9 @@ public class ProductoController : ControllerBase
     }
 
     [HttpPost]
+    public ActionResult CrearProducto(Producto prod)
+    {
+        repositorio.CrearProducto(prod);
+        return Ok();
+    }
 }

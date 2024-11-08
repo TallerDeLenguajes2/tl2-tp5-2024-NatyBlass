@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g49EemDjvM4=",
+  "dgSpecHash": "o9UVdrX8sS4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Natalia\\Documents\\FACULTAD 2024\\Taller de Lenguajes 2\\tl2-tp5-2024-NatyBlass\\tl2-tp5-2024-NatyBlass.csproj",
+  "projectFilePath": "c:\\Users\\Natalia\\Documents\\FACULTAD 2024\\Taller de Lenguajes 2\\tl2-tp5-2024-NatyBlass\\tl2-tp5-2024-NatyBlass.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Natalia\\.nuget\\packages\\microsoft.data.sqlite\\8.0.10\\microsoft.data.sqlite.8.0.10.nupkg.sha512",
     "C:\\Users\\Natalia\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.10\\microsoft.data.sqlite.core.8.0.10.nupkg.sha512",
