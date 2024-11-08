@@ -31,4 +31,20 @@ public class PresupuestosController : ControllerBase
             return NotFound("No hay nada en la lista de Presupuestos");
         }
     }
+
+    [HttpGet("{id}")]
+    public ActionResult ObtenerPresupuestoPorId(int id)
+    {
+        var presup = repositorioPresupuesto.ObtenerPresupuestoPorId(id);
+
+        if (presup != null)
+        {
+            return Ok(presup);
+        }
+        else
+        {
+            return NotFound("Presupuesto No Encontrado");
+        }
+    }
+
 }

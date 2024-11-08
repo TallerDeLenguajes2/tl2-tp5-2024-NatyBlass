@@ -45,11 +45,40 @@ public class PresupuestoRepositorio
             }
             
             connection.Close();
+        }
+            
+        return presupuestos;
+    }
 
-            return presupuestos;
+    public Presupuesto ObtenerPresupuestoPorId(int id)
+    {
+        Presupuesto presup = null;
+
+        using (var connection = new SqliteConnection(cadenaDeConexion))
+        {
+            string consulta = "SELECT IdPresupuesto, NombreDestinatario, FechaCreacion FROM Presupuestos WHERE IdPresupuesto = @Id;";
+            var command = new SqliteCommand(consulta, connection);
+            command.Parameters.AddWithValue("@Id", id);
+            
+            connection.Open();
+            
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    presup = new Presupuesto(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetDateTime(2));
+                }
+            }
+
+            connection.Close();
         }
 
+        return presup;
     }
+
 
     /*public void AgregarProductoAPresupuesto(int idPresupuesto, Producto producto, int cantidad)
     {
