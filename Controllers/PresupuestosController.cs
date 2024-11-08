@@ -16,4 +16,19 @@ public class PresupuestosController : ControllerBase
         repositorioPresupuesto.CrearPresupuesto(presup);
         return Ok("Presupuesto Creado Correctamente");
     }
+
+    [HttpGet]
+    public ActionResult ListarPresupuestos()
+    {
+        var presupuestos = repositorioPresupuesto.ListarPresupuesto();
+
+        if (presupuestos != null)
+        {
+            return Ok(presupuestos);
+        }
+        else
+        {
+            return NotFound("No hay nada en la lista de Presupuestos");
+        }
+    }
 }

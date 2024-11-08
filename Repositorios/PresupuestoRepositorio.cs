@@ -19,4 +19,46 @@ public class PresupuestoRepositorio
             connection.Close();
         }
     }
+
+    public List<Presupuesto> ListarPresupuesto()
+    {
+        var presupuestos = new List<Presupuesto>();
+        using (var connection = new SqliteConnection(cadenaDeConexion))
+        {
+            string consulta = "SELECT IdPresupuesto, NombreDestinatario, FechaCreacion FROM Presupuestos;";
+            var command = new SqliteCommand(consulta, connection);
+            
+            connection.Open();
+            
+            using (SqliteDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var presupuesto = new Presupuesto(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetDateTime(2)
+                    );
+
+                    presupuestos.Add(presupuesto);
+                }
+            }
+            
+            connection.Close();
+
+            return presupuestos;
+        }
+
+    }
+
+    /*public void AgregarProductoAPresupuesto(int idPresupuesto, Producto producto, int cantidad)
+    {
+        using (var connection = new SqliteConnection(cadenaDeConexion))
+        {
+            string consulta = "INSERT INTO PresupuestosDetalle (idPresupuesto, idProducto, Cantidad) VALUES (@idPresupuesto, @idProducto, @Cantidad);";
+            var command = new SqliteCommand(consulta, connection);
+            
+        }
+    }
+    */
 }
